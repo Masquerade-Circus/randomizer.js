@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+		<meta charset="utf-8"/>
+		<title></title>
+		<link rel="shortcut icon" href="favicon.ico"/>
+		<style>
+			body,div,ul,li, img, a {margin:0; padding:0; outline: 0; text-decoration: none;}
+			a{color: cornflowerblue;}
+			a:hover{color: cadetblue;}
+			a.download{text-decoration:underline;}
+			html,body{height: 100%;}
+			body{font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif; margin: 0 auto; padding: 2%;}
+			.description{font-size: 1.4em; display: block; text-align: center;}
+			.tc{text-align: center}
+			.texto{padding: 10px;margin-bottom: 5px;}
+			.gray{color: #666;font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;}
+			.container{border: 1em; padding: 2em; margin: 2em; text-align: center;}
+			.btn{width: 30%; margin: 0 0 0 20px; padding: 0.5em 2.5em; display: inline-block; background: #ccc; cursor:pointer;}
+			.btn:hover{background: green; color: #fff}
+			.result,.code{background: #0A0704; color: #ccc; padding: 1em; margin: 1em 2em;font-family: Monaco, Consolas, "Lucida Console", monospace;}
+			.result{background: #ccc; color: #0A0704;}
+			img{width: 100%; height: auto;}
+			.button{margin: 0.5em; padding: 0.5em 1.5em; background: #ccc; color: #000; float: left; cursor: pointer;}
+			.button:hover{background: #000; color: #ccc}
+			.active{background: green; color: #fff}
+			.reset:hover{background: red; color: #fff;}
+			.github{position: absolute; top:0; right: 0; display:block;}
+			.legal{position: fixed; bottom:0; right: 0; background: #fff; padding: 0.2em 1.5em; box-shadow: 0 0 0.3em; text-align: right;}
+			.clear{clear: both;}
+			
+			.button{float: none; display: inline-block;}
+			.code{margin-bottom: 0;}
+			.result{margin-top: 0;}
+			.random, .randomFunction{display: inline-block;}
+			.panel{padding: 1em; margin: 1em 2em; background: #ddd}
+			ul{margin-left: 2em}
+		 </style>
+		<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="randomizer.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+			
+				function setRandom(){
+					$('.random').randomSize([1,2,3], 'em')
+										.randomColor()
+										.randomBgColor(['red','blue','black','gray'])
+										.randomWidth(10,100,'%')
+										.randomContent([
+												'Hola mundo',
+												'Hola mundo dos',
+												'Otro ejemplo', 
+												'Lorem ipsum',
+												'Desarrollado por Masquerade Circus'
+										], 'replace');
+				}
+				
+				
+				var functions = [
+					function(){$(this).html('This is just Fun');},
+					function(){$(this).html('Random Color').randomColor();},
+					function(){$(this).html('Random Background Color ').randomBgColor();},
+					function(){
+						$(this).html('Random Content<br />').randomContent([
+											'Hola mundo',
+											'Hola mundo dos',
+											'Otro ejemplo', 
+											'Lorem ipsum',
+											'Desarrollado por Masquerade Circus'
+						]);
+					},
+					function(){$(this).html('Desarrollado por Masquerade Circus');}
+				];
+				function randomFunction(){
+					$('.randomFunc').randomFunction(functions);
+				}
+				
+				setRandom();
+				randomFunction();
+				
+				$('.setRandom').on('click', function(){setRandom();});
+				$('.randomFunction').on('click', function(){randomFunction();});
+				
+			});
+		</script>
+	</head>
+<body>
+				<a href="http://github.com/Masquerade-Circus/randomizer.js" title="Fork me on Github" class="github" target="_blank"><img src="github.png" alt="Github" width="149" height="149"></a>
+				<h1 class="tc"><b>Randomizer.js</b></h1>
+				<b class="description">
+					jQuery plugin that give you functions to get/set random values or call random functions.
+					<br><br><a href="https://github.com/Masquerade-Circus/randomizer.js/archive/master.zip" title="Download" class="download" target="_blank">Download</a>
+				</b>
+				
+				<br><br><h2>How to use: </h2>
+				Call the plugin on the set of elements or call the helper functions to get a value.
+				
+				<br><br><h2>Examples: </h2>
+				<br class="clear">
+				<div class="panel tc">
+					<div class="button setRandom">Set random</div>
+					<br>
+					<div class="random tc"></div>
+				</div>
+				<div class="panel tc">
+					<div class="button randomFunction">Random Function</div>
+					<br>
+					<div class="randomFunc tc"></div>
+				</div>
+				
+				<br><br><h2>Functions: </h2>
+				<div class="code">
+					$(selector).randomSize(min,max,unit);
+					<br>$(selector).randomSize(array,unit);
+				</div>
+				<div class="result">
+					Set the font-size of the selector to a random number from min to max numbers or an array of numbers.
+					<br>Example: 
+					<ul>
+						<li>$('p').randomSize(1,5,'em');</li>
+						<li>$('p').randomSize([5,8,9,12],'pt');</li>
+					</ul>
+					Defaults to min = 10, max = 30, unit = 'px'.
+				</div>
+				
+				<div class="code">
+					$(selector).randomHeight(min,max,unit);
+					<br>$(selector).randomHeight(array,unit);
+				</div>
+				<div class="result">
+					Set the height of the selector to a random size from min to max sizes or an array of sizes.
+					<br>Example: 
+					<ul>
+						<li>$('div').randomHeight(1,5,'em');</li>
+						<li>$('div').randomHeight([5,8,9,12],'%');</li>
+					</ul>
+					Defaults to min = 10, max = 100, unit = 'px'.
+				</div>
+				
+				<div class="code">
+					$(selector).randomWidth(min,max,unit);
+					<br>$(selector).randomWidth(array,unit);
+				</div>
+				<div class="result">
+					Set the width of the selector to a random size from min to max sizes or an array of sizes.
+					<br>Example: 
+					<ul>
+						<li>$('div').randomWidth(1,5,'em');</li>
+						<li>$('div').randomWidth([5,8,9,12],'%');</li>
+					</ul>
+					Defaults to min = 10, max = 100, unit = 'px'.
+				</div>
+				
+				<div class="code">$(selector).randomColor(array);</div>
+				<div class="result">
+					Set the font-color of the selector to a random color from an array of colors. 
+					<br>Defaults to random color from the 16 million hex colors.
+				</div>
+				
+				<div class="code">$(selector).randomBgColor(array);</div>
+				<div class="result">
+					Set the background-color of the selector to a random color from an array of colors. 
+					<br>Defaults to random color from the 16 million hex colors.
+				</div>
+				
+				<div class="code">$(selector).randomBgImage(array);</div>
+				<div class="result">
+					Set the background-image of the selector to a random image from an array of image sources. 
+				</div>
+				
+				<div class="code">$(selector).randomContent(array, dominsertion);</div>
+				<div class="result">
+					Set the content of the selector to a random content from an array of contents. 
+					<br>Dom insertion string could be: 'append', 'prepend','after','before','html' or 'replace'.
+					<br>Defaults to 'append'.
+				</div>
+				
+				<div class="code">$(selector).randomSource(array);</div>
+				<div class="result">
+					Set the source attribute of the selector to a random source from an array of sources.
+				</div>
+				
+				<div class="code">$(selector).randomFunction(array);</div>
+				<div class="result">
+					Call a random function on the selector from an array of functions. 
+					<br>You can access the original selector inside the random function by $(this).
+				</div>
+				
+				<div class="code">$(selector).randomLoad(array, function);</div>
+				<div class="result">
+					Load a random content to the selector from an array of sources. 
+					<br>You can pass a callback function as second argument.
+				</div>
+				
+				<div class="code">$.randomizer.mRnd(min,max)</div>
+				<div class="result">
+					Helper function to get a random number between min and max.
+					<br>Defaults to a random number between 0 and 100.
+				</div>
+				
+				<div class="code">$.randomizer.Array(array)</div>
+				<div class="result">
+					Helper function to get a random value from an array.
+				</div>
+				
+				<div class="code">$.randomizer.randomFunction(array,arguments)</div>
+				<div class="result">
+					Helper function to call a random function from an array of functions.
+					<br>The second parameter could be an javascript object, array, dom object, jquery object or a single value.
+					<br>If no arguments are passed, the window object will be passed as second parameter.
+				</div>
+				
+				<br class="clear">
+				<br><br><h2>Legal: </h2>
+				Author & copyright (c) 2013: <a href="http://masquerade-circus.creaken.com" title="Masquerade Circus" target="_blank">Masquerade Circus</a>
+				<br>Dual <a href="http://opensource.org/licenses/MIT" title="MIT" target="_blank">MIT</a> & <a href="http://opensource.org/licenses/GPL-2.0" title="GPLv2" target="_blank">GPLv2</a> license
+				<br><br><br><br>
+</body>
+</html>
