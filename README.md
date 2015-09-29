@@ -4,7 +4,7 @@ randomizer.js
 jQuery plugin that give you functions to get/set random values or call random functions.
 
 ## Demo
-http://masquerade-circus.creaken.com/Plugins/randomizer/
+http://masquerade-circus.net/myPlugins/randomizer/
 
 ##How to use:
 Call the plugin on the set of elements or call the helper functions to get a value.
@@ -101,5 +101,5 @@ If no arguments are passed, the window object will be passed as second parameter
 
 
 # Legal
-Author & copyright (c) 2013: [Masquerade Circus](http://masquerade-circus.creaken.com)
+Author & copyright (c) 2013: [Masquerade Circus](http://masquerade-circus.net)
 Dual [MIT](http://opensource.org/licenses/MIT) & [GPLv2](http://opensource.org/licenses/GPL-2.0) license
